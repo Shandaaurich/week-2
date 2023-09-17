@@ -1,0 +1,23 @@
+{
+  "name": "week-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "demo.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Shandaaurich/week2TeamAssignment.git"
+  },
+  "author": "shanda aurich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shandaaurich/week2TeamAssignment/issues"
+  },
+  "homepage": "https://github.com/Shandaaurich/week2TeamAssignment#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -7,9 +7,12 @@ const data = {
     firstName: 'Shanda',
     primaryDescription: ' has 4 kids',
     base64Image: '',
-    linkedInLink: 'https://www.linkedin.com',
-    githubLink: 'https://github.com',
-    
+    linkedInLink: {
+        text: 'https://www.linkedin.com'
+    },
+    githubLink: {
+        text: 'https://github.com',
+    }
 }
 
 exports.getData = (req, res, next) => {

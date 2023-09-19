@@ -1,3 +1,5 @@
+
+
 const data = {
     professionalName: 'Shanda Aurich',
     nameLink: {
@@ -18,7 +20,7 @@ const data = {
     }
 }
 
+//anytime this route is requested it will send back the above data with the status code of 200
 exports.getData = (req, res, next) => {
- 
-    res.json(data);
+     res.status(200).json(data);
   };

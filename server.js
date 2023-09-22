@@ -11,8 +11,13 @@ const port = process.env.PORT || 8080;
 
 app.use(cors());
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 //routes in a separate file to keep the server file lean
 app.use('/professional', routes);
 
-app.listen(process.env.PORT || port);
-console.log('Web server listening on port ' + (process.env.PORT || port));
+app.listen(port);
+console.log('Web server listening on port ' + (port));

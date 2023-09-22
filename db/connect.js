@@ -29,7 +29,7 @@ const getDb = () => {
     return _db;
 };
 
-mondule.exports = {
+module.exports = {
     initDb,
     getDb
 };

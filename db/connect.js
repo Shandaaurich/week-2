@@ -1,10 +1,10 @@
 //dotenv package to access environment file
-import { config } from 'dotenv';
+const dotenv = require('dotenv');
 
-config();
+dotenv.config();
 
 //Mongo client configuration
-import { MongoClient } from 'mongodb';
+const MongoClient = require('mongodb').MongoClient;
 
 let _db;
 
@@ -32,7 +32,7 @@ const getDb = () => {
     return _db;
 };
 
-export default {
+module.exports = {
     initDb,
-    getDb
-};
+    getDb,
+  };

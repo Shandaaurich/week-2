@@ -1,16 +1,18 @@
 //express web server
-import cors from 'cors';
-import express from 'express';
+// const cors = require('cors')
+const bodyParser = require('body-parser');
+const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
 const app = express();
-import routes from './routes/professional';
+const routes = require('./routes/professional');
 //require the mongoDb file that has the connection to MongoDB
-import { initDb } from './db/connect';
+const mongodb = require('./db/connect');
 
 //change the port 8080 to support the production port
 const port = process.env.PORT || 8080;
 
-app.use(cors());
-
+// app.use(cors());
+app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
@@ -20,7 +22,7 @@ app.use((req, res, next) => {
 app.use('/professional', routes);
 
 //connect to MongoDB instance, show error in console or display connected message
-initDb((err, mongodb) => {
+mongodb.initDb((err, mongodb) => {
     if (err) {
         console.log(err);
     } else {

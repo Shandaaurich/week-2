@@ -8,7 +8,7 @@ const getData = async (req, res) => {
     //return as an array and loop through
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists[0]);//first item in array
+        res.status(200).json(lists[0].user);//first item in array
     });
 };
 

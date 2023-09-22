@@ -1,23 +1,26 @@
 //dotenv package to access environment file
-const dotenv = require('dotenv');
+import { config } from 'dotenv';
 
-dotenv.config();
+config();
 
 //Mongo client configuration
-const MongoClient = require('mongodb').MongoClient;
+import { MongoClient } from 'mongodb';
 
 let _db;
 
 //if _db has been given a value then return callback
-const initDb = callback => {
+const initDb = (callback) => {
     if (_db) {
         console.log('Db is already initialized!');
         return callback(null, _db);
     }
 //if not then connect to the database and the assign it to the variable
-    MongoClient.connect(mondgoURL).then(client => {
-        db = client;
+    MongoClient.connect(process.env.MONGODB_URI).then((client) => {
+        _db = client;
         callback(null, _db);
+    })
+    .catch((err) => {
+      callback(err);
     });
 };
 
@@ -29,7 +32,7 @@ const getDb = () => {
     return _db;
 };
 
-module.exports = {
+export default {
     initDb,
     getDb
 };

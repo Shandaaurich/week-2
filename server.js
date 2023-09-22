@@ -1,10 +1,10 @@
 //express web server
-var cors = require('cors');
-const express = require('express');
+import cors from 'cors';
+import express from 'express';
 const app = express();
-const routes = require('./routes/professional');
+import routes from './routes/professional';
 //require the mongoDb file that has the connection to MongoDB
-const mongodb = require('./db/connect');
+import { initDb } from './db/connect';
 
 //change the port 8080 to support the production port
 const port = process.env.PORT || 8080;
@@ -19,5 +19,12 @@ app.use((req, res, next) => {
 //routes in a separate file to keep the server file lean
 app.use('/professional', routes);
 
-app.listen(port);
-console.log('Web server listening on port ' + (port));
+//connect to MongoDB instance, show error in console or display connected message
+initDb((err, mongodb) => {
+    if (err) {
+        console.log(err);
+    } else {
+        app.listen(port);
+        console.log('Web server listening on port ' + (port));
+    }
+});
